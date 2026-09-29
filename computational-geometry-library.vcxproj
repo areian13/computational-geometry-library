@@ -128,16 +128,23 @@
     <ClCompile Include="algorithm\closest_point_pair.hpp" />
     <ClCompile Include="algorithm\convex_hull.hpp" />
     <ClCompile Include="algorithm\farthest_point_pair.hpp" />
+    <ClCompile Include="geometry\point_location.hpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="geometry\bitangent.hpp" />
     <ClCompile Include="geometry\line.hpp" />
     <ClCompile Include="geometry\polygon.hpp" />
+    <ClCompile Include="structure\dcel.hpp" />
+    <ClCompile Include="structure\triangulation.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="numeric.hpp" />
     <ClInclude Include="geometry\circle.hpp" />
     <ClInclude Include="geometry\point.hpp" />
     <ClInclude Include="geometry\segment.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".gitignore" />
+    <None Include="README.md" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

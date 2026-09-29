@@ -36,6 +36,15 @@
     <ClCompile Include="algorithm\closest_point_pair.hpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="geometry\point_location.hpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="structure\dcel.hpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="structure\triangulation.hpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="geometry\point.hpp">
@@ -50,5 +59,9 @@
     <ClInclude Include="geometry\circle.hpp">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="README.md" />
+    <None Include=".gitignore" />
   </ItemGroup>
 </Project>
