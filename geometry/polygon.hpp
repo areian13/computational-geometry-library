@@ -44,10 +44,10 @@ struct Polygon {
 
     double signed_area() const {
         int n = points.size();
-        double ret = 0.0;
+        double ret = 0.;
         for (int i = 0; i < n; i++)
             ret += points[i].cross(points[(i + 1) % n]);
-        return ret / 2.0;
+        return ret / 2.;
     }
 
     Point& operator[](int i) { return points[i]; }
