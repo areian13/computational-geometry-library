@@ -25,9 +25,6 @@ algorithm/
 └─ farthest_point_pair.hpp
 
 structure/
-├─ dcel.hpp
-├─ voronoi_diagram.hpp
-└─ visibility_complex.hpp
 ```
 
 각 디렉터리는 다음 기준으로 구분합니다.
