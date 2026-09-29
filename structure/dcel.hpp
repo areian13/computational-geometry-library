@@ -360,6 +360,7 @@ struct DCEL {
             cur = halfedges[cur].next;
         } while (cur != e);
 
+        assert(this->is_valid());
         return e;
     }
     int split_edge(int e, const Point& p) {
@@ -426,7 +427,8 @@ struct DCEL {
         halfedges[nt].prev = t2;
 
         vertices[w].halfedge = e2;
-
+        
+        assert(this->is_valid());
         return w;
     }
 };

@@ -441,7 +441,7 @@ Segment ray = {p, {p.x + 1. / EPS, p.y + EPS}};
 
 ### Structures
 
-- [ ] DCEL
+- [ ] DCEL # 현재 triangulation과 함께 개발 중에 있습니다. 개발 과정에선 몇몇 함수의 마지막에 assert(is_valid())로 개발의 안정성을 더하고, 모든 개발이 끝난 이후엔 삭제해야합니다.
 - [ ] Voronoi Diagram
 - [ ] Visibility Complex
 
