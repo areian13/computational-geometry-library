@@ -17,7 +17,7 @@ struct Polygon {
     Polygon(const std::vector<Point>& points) : points(points) {}
 
     bool is_simple(bool allow_lower_dim = false) const {
-        return true; // ±¸Çö ¾ÈµÊ
+        return true; // êµ¬í˜„ ì•ˆë¨
     }
     bool is_convex(bool allow_lower_dim = false) const {
         int n = points.size();

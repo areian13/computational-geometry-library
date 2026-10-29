@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="소스 파일">
@@ -18,35 +18,41 @@
     <ClCompile Include="main.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="geometry\line.hpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="geometry\bitangent.hpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="algorithm\convex_hull.hpp">
-      <Filter>헤더 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="geometry\polygon.hpp">
-      <Filter>헤더 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="algorithm\farthest_point_pair.hpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="algorithm\closest_point_pair.hpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="geometry\point_location.hpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="structure\dcel.hpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="structure\triangulation.hpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="geometry\line.hpp">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="geometry\bitangent.hpp">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="algorithm\convex_hull.hpp">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="algorithm\minkowski_sum.hpp">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="geometry\polygon.hpp">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="geometry\convex_polygon_intersection.hpp">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="algorithm\farthest_point_pair.hpp">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="algorithm\closest_point_pair.hpp">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="geometry\point_location.hpp">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="structure\dcel.hpp">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="structure\triangulation.hpp">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
     <ClInclude Include="geometry\point.hpp">
       <Filter>헤더 파일</Filter>
     </ClInclude>

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -70,6 +70,16 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <OutDir>$(ProjectDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(ProjectDir)obj\$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <LanguageStandard>stdcpp23</LanguageStandard>
+      <AdditionalOptions>/utf-8 /Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+  </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -102,7 +112,6 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp23</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -117,7 +126,6 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp23</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -125,18 +133,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="algorithm\closest_point_pair.hpp" />
-    <ClCompile Include="algorithm\convex_hull.hpp" />
-    <ClCompile Include="algorithm\farthest_point_pair.hpp" />
-    <ClCompile Include="geometry\point_location.hpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="geometry\bitangent.hpp" />
-    <ClCompile Include="geometry\line.hpp" />
-    <ClCompile Include="geometry\polygon.hpp" />
-    <ClCompile Include="structure\dcel.hpp" />
-    <ClCompile Include="structure\triangulation.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="algorithm\closest_point_pair.hpp" />
+    <ClInclude Include="algorithm\convex_hull.hpp" />
+    <ClInclude Include="algorithm\minkowski_sum.hpp" />
+    <ClInclude Include="algorithm\farthest_point_pair.hpp" />
+    <ClInclude Include="geometry\point_location.hpp" />
+    <ClInclude Include="geometry\bitangent.hpp" />
+    <ClInclude Include="geometry\line.hpp" />
+    <ClInclude Include="geometry\polygon.hpp" />
+    <ClInclude Include="geometry\convex_polygon_intersection.hpp" />
+    <ClInclude Include="structure\dcel.hpp" />
+    <ClInclude Include="structure\triangulation.hpp" />
     <ClInclude Include="numeric.hpp" />
     <ClInclude Include="geometry\circle.hpp" />
     <ClInclude Include="geometry\point.hpp" />

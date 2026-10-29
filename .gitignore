@@ -1,7 +1,15 @@
 .vs/
+*.suo
+*.VC.db
+*.VC.VC.opendb
+*.user
+.vscode/c_cpp_properties.json
+.vscode/ipch/
+
 x64/
+Win32/
 Debug/
 Release/
+obj/
 
-*.user
-*.vcxproj.user
+computat.*/
