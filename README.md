@@ -240,26 +240,31 @@ Sutherland–Hodgman 클리핑으로 큰 경계를 작은 경계의 반평면들
 
 ## Minkowski Sum and Translation Overlap Region
 
-`algorithm/minkowski_sum.hpp`는 정점 쌍을 모두 열거한 뒤 기존 `convex_hull`을
-호출하는 단순한 free function 두 개를 제공합니다.
+`algorithm/minkowski_sum.hpp`는 CCW 볼록 다각형의 변을 방향각 순서로 병합하여
+민코프스키 합을 구하는 free function을 제공합니다.
 
 ```cpp
-ConvexPolygon minkowski_sum_naive(const ConvexPolygon& a, const ConvexPolygon& b);
-ConvexPolygon translation_overlap_region_naive(const ConvexPolygon& p, const ConvexPolygon& q);
+ConvexPolygon pairwise_hull(const ConvexPolygon& a, const ConvexPolygon& b, bool subtract_second);
+ConvexPolygon minkowski_sum(const ConvexPolygon& a, const ConvexPolygon& b);
+ConvexPolygon translation_overlap_region(const ConvexPolygon& p, const ConvexPolygon& q);
 ```
 
-첫 함수는 `A+B = conv{a+b}`, 두 번째는 `(P+t)`가 `Q`와 적어도 접하는
-모든 이동 벡터의 집합 `D = Q+(-P) = conv{q-p}`를 반환합니다. 두 번째 함수의
+`minkowski_sum`은 `A+B = conv{a+b}`, `translation_overlap_region`은 `(P+t)`가 `Q`와 적어도 접하는
+모든 이동 벡터의 집합 `D = Q+(-P) = conv{q-p}`를 반환합니다. 후자의
 인자 순서는 이동하는 `P`, 고정된 `Q`입니다. 경계의 점/선분 접촉도 포함합니다.
 
-시간은 `O(n*m*log(n*m+1))`, 추가 공간은 `O(n*m)`입니다. 선형 시간 Minkowski
-합은 구현하지 않습니다. 빈 집합/점/선분도 지원하며, 결과는 기존 볼록 껍질의
-CCW 및 퇴화 표현을 따릅니다. 입력 정점의 순서와 중복은 무관하며, 입력은 해당
-정점들이 생성하는 볼록집합으로 해석합니다. 새 클래스나 연산자 오버로드는 추가하지 않습니다.
+시간과 추가 공간은 모두 `O(n+m)`입니다. 입력은 볼록 다각형의 CCW 경계 순서여야 하며,
+시작 정점은 자유롭습니다. 빈 집합/점/선분, 연속 중복점, 마지막의 닫는 중복점과 공선 경계점도 처리합니다.
+결과는 중복점과 불필요한 공선 경계점이 없는 CCW 경계이며, 퇴화하면 점 하나 또는 선분의 두 끝점을 반환합니다.
+정렬되지 않은 점 집합은 호출 전에 별도로 `convex_hull`을 구해야 합니다.
 
-비유한 입력과 정점 덧셈/뺄셈의 overflow는 예외로 거부합니다. 기존 hull의
-`double`/`EPS` 정책을 따르므로 exact arithmetic은 아니며, orientation과 거리 등
-중간 연산이 표현 가능한 좌표 범위를 전제합니다.
+`pairwise_hull(a, b, false)`는 `A+B`, `pairwise_hull(a, b, true)`는 `A+(-B)`입니다.
+원점 대칭은 CCW를 유지하므로 같은 병합 로직을 사용하며, 대칭 후 시작 정점만 다시 찾습니다.
+이는 모든 점 쌍의 차를 모은 집합으로, 차집합 `A\B`와는 다릅니다.
+
+입력은 유한한 좌표와 기하 연산이 `double`의 표현 범위 안에 있는 CCW 볼록 경계를 전제로 합니다.
+방향각 비교와 공선 정리는 기존 `Point::cross()`와 `orientation()`의 부호를 사용하며,
+`EPS` 없는 부동소수점 판정입니다.
 
 검증: `powershell -NoProfile -ExecutionPolicy Bypass -File tests/run_minkowski_sum_tests.ps1`
 (`-Configuration Release`도 지원).
@@ -637,7 +642,7 @@ sign(x);
 - `Point::operator==`는 exact comparison입니다.
 - floating-point geometric predicate는 필요한 경우 `EPS`를 사용합니다.
 - Polygon 정점 배열의 마지막에 첫 번째 정점을 반복해서 저장하지 않습니다.
-- `ConvexPolygon`은 CCW 순서를 기준으로 연산합니다.
+- 모든 polygon의 경계 정점은 CCW 순서를 전제로 연산합니다.
 - Convex Hull은 불필요한 collinear intermediate vertex를 제거합니다.
 - point pair 알고리즘은 원본 입력의 index를 반환합니다.
 - point pair의 두 index는 서로 다른 입력 원소를 의미합니다.
